@@ -6,6 +6,11 @@ while(True):
 	payload = get("https://meowfacts.herokuapp.com/").json()
 	output = payload['data'][0]
 	print(output);
-	proc = Popen("./static-text -f cherry-13-r.bdf --led-chain=4 %s" % output,shell=True)
-	sleep(10)
-	proc.kill()
+	proc = Popen("./scripts/scrolling-text-example -f \
+		 fonts/10x20.bdf \
+		 --led-chain=4 \
+	 	 -y 6 \
+		 -C 115,0,230 \
+		 %s" % output,shell=True)
+	sleep(1000)
+	proc.terminate()
