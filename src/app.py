@@ -18,4 +18,5 @@ while(True):
 	sleep(20)
 	#proc.send_signal(signal.SIGINT)
 	#proc.kill()
-	os.kill(os.getpgid(proc.pid), seignal.SIGTERM)
+	#os.kill(os.getpgid(proc.pid), signal.SIGTERM)
+	Popen(["pkill", "-P", str(proc.pid)])
