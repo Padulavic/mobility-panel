@@ -1,12 +1,11 @@
 from requests import get
-
-import subprocess
-
-import time
+from subprocess import Popen
+from time import sleep
 
 while(True):
-	test = get("https://meowfacts.herokuapp.com/").json()
-	output = test['data'][0]
+	payload = get("https://meowfacts.herokuapp.com/").json()
+	output = payload['data'][0]
 	print(output);
-	subprocess.Popen("./scrolling-text -f cherry-13-r.bdf --led-chain=4 %s" % output,shell=True)
-	time.sleep(1000)
+	proc = Popen("./scrolling-text -f cherry-13-r.bdf --led-chain=4 %s" % output,shell=True)
+	sleep(10)
+	proc.kill()
