@@ -2,4 +2,7 @@ run:
 	 python src/app.py
 
 config:
-	echo "todo"
+	echo "requires SU credentials and internet connection"
+	apt-get install python-pip
+	pip install requests
+	
